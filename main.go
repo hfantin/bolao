@@ -27,11 +27,11 @@ func main() {
 func GetNumeros(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	qtd, err := strconv.Atoi(params["qtd"])
-	if err != nil {
+	if err != nil || qtd < 6 {
 		qtd = 6
 	}
 	jogos, err := strconv.Atoi(params["jogos"])
-	if err != nil {
+	if err != nil || jogos < 1 {
 		jogos = 1
 	}
 	lista := service.Generate(jogos, qtd)
