@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 	"math/rand"
 	"sort"
 	"time"
@@ -18,11 +17,9 @@ func Generate(jogos, qtd int) map[int][]int {
 		jogos = 1
 	}
 
-	fmt.Printf("Bolão da megasena com %d numeros e %d jogo(s):\n\n", qtd, jogos)
 	jogosGerados := map[int][]int{}
 	for i := 0; i < jogos; i++ {
 		numeros := gerarNumeros(max, qtd)
-		fmt.Println("numeros ", numeros)
 		jogosGerados[i] = numeros
 	}
 
