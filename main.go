@@ -16,6 +16,7 @@ func main() {
 	router.HandleFunc("/numeros", GetNumeros).Methods("GET")
 	router.HandleFunc("/numeros/{qtd}", GetNumeros).Methods("GET")
 	router.HandleFunc("/numeros/{qtd}/jogos/{jogos}", GetNumeros).Methods("GET")
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./static/")))
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"

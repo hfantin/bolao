@@ -6,7 +6,12 @@ import (
 	"time"
 )
 
-func Generate(jogos, qtd int) map[int][]int {
+type Resultado struct {
+	Jogo    int   `json:"jogo"`
+	Numeros []int `json:"numeros"`
+}
+
+func Generate(jogos, qtd int) []Resultado {
 	max := 60
 
 	if qtd < 6 || qtd > 20 {
@@ -17,10 +22,10 @@ func Generate(jogos, qtd int) map[int][]int {
 		jogos = 1
 	}
 
-	jogosGerados := map[int][]int{}
-	for i := 0; i < jogos; i++ {
+	jogosGerados := make([]Resultado, 0, 0)
+	for i := 1; i <= jogos; i++ {
 		numeros := gerarNumeros(max, qtd)
-		jogosGerados[i] = numeros
+		jogosGerados = append(jogosGerados, Resultado{i, numeros})
 	}
 
 	return jogosGerados
