@@ -34,14 +34,7 @@ System.register(["../views/index", "../models/index"], function (exports_1, cont
                             let response = yield fetch(uri);
                             let json = yield response.json();
                             json.map(item => {
-                                const lista = new Array();
-                                lista.push(item.d1);
-                                lista.push(item.d2);
-                                lista.push(item.d3);
-                                lista.push(item.d4);
-                                lista.push(item.d5);
-                                lista.push(item.d6);
-                                this._resultado = new index_2.Resultado(item.jogo, item.data, lista);
+                                this._resultado = new index_2.Resultado(item.jogo, item.data, item.dezenas);
                             });
                             this._resultadosView.update(this._resultado);
                         }

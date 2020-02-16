@@ -15,17 +15,10 @@ export class ResultadosController {
             let response = await fetch(uri);
             let json = await response.json();
             json.map(item => {
-                const lista = new Array<number>();
-                lista.push(item.d1)
-                lista.push(item.d2)
-                lista.push(item.d3)
-                lista.push(item.d4)
-                lista.push(item.d5)
-                lista.push(item.d6)
                 this._resultado = new Resultado(
                     item.jogo,
                     item.data, 
-                    lista
+                    item.dezenas
                 )
             });
             this._resultadosView.update(this._resultado);

@@ -11,14 +11,9 @@ import (
 )
 
 type Resultado struct {
-	Id   int    `json:"jogo"`
-	Data string `json:"data"`
-	D1   int    `json:"d1"`
-	D2   int    `json:"d2"`
-	D3   int    `json:"d3"`
-	D4   int    `json:"d4"`
-	D5   int    `json:"d5"`
-	D6   int    `json:"d6"`
+	Id      int    `json:"jogo"`
+	Data    string `json:"data"`
+	Dezenas []int  `json:"dezenas"`
 }
 
 func GetUltimosResultados(w http.ResponseWriter, r *http.Request) {
@@ -46,9 +41,17 @@ func getResults(limite int) ([]Resultado, error) {
 	resultados := make([]Resultado, 0)
 	for rows.Next() {
 		r := Resultado{}
-		if err := rows.Scan(&r.Id, &r.Data, &r.D1, &r.D2, &r.D3, &r.D4, &r.D5, &r.D6); err != nil {
+		var d1 int
+		var d2 int
+		var d3 int
+		var d4 int
+		var d5 int
+		var d6 int
+
+		if err := rows.Scan(&r.Id, &r.Data, &d1, &d2, &d3, &d4, &d5, &d6); err != nil {
 			return nil, err
 		}
+		r.Dezenas = []int{d1, d2, d3, d4, d5, d6}
 		resultados = append(resultados, r)
 	}
 	return resultados, nil
