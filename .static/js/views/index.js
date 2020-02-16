@@ -1,4 +1,4 @@
-System.register(["./view", "./mensagemview", "./jogosview"], function (exports_1, context_1) {
+System.register(["./view", "./mensagemview", "./jogosview", "./resultadosview"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function exportStar_1(m) {
@@ -18,6 +18,9 @@ System.register(["./view", "./mensagemview", "./jogosview"], function (exports_1
             },
             function (jogosview_1_1) {
                 exportStar_1(jogosview_1_1);
+            },
+            function (resultadosview_1_1) {
+                exportStar_1(resultadosview_1_1);
             }
         ],
         execute: function () {

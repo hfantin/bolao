@@ -1,5 +1,5 @@
 import { View } from './view';
-import { Jogos } from '../models/jogos';
+import { Jogos } from '../models/index';
 
 export  class JogosView extends View<Jogos>{
 

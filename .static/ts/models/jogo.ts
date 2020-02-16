@@ -1,6 +1,6 @@
 export class Jogo {
 
-    constructor(private _numero: number,  private _dezenas: []) {}
+    constructor(private _numero: number,  private _dezenas: Array<number>) {}
 
     get numero() {
         return this._numero;

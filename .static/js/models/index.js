@@ -1,4 +1,4 @@
-System.register(["./jogo", "./jogos", "./mensagem"], function (exports_1, context_1) {
+System.register(["./jogo", "./jogos", "./resultado", "./mensagem"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function exportStar_1(m) {
@@ -15,6 +15,9 @@ System.register(["./jogo", "./jogos", "./mensagem"], function (exports_1, contex
             },
             function (jogos_1_1) {
                 exportStar_1(jogos_1_1);
+            },
+            function (resultado_1_1) {
+                exportStar_1(resultado_1_1);
             },
             function (mensagem_1_1) {
                 exportStar_1(mensagem_1_1);

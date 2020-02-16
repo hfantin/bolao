@@ -11,7 +11,7 @@ import (
 )
 
 type Resultado struct {
-	Id   int    `json:"id"`
+	Id   int    `json:"jogo"`
 	Data string `json:"data"`
 	D1   int    `json:"d1"`
 	D2   int    `json:"d2"`
