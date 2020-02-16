@@ -41,17 +41,12 @@ func getResults(limite int) ([]Resultado, error) {
 	resultados := make([]Resultado, 0)
 	for rows.Next() {
 		r := Resultado{}
-		var d1 int
-		var d2 int
-		var d3 int
-		var d4 int
-		var d5 int
-		var d6 int
+		dezenas := make([]int, 6, 6)
 
-		if err := rows.Scan(&r.Id, &r.Data, &d1, &d2, &d3, &d4, &d5, &d6); err != nil {
+		if err := rows.Scan(&r.Id, &r.Data, &dezenas[0], &dezenas[1], &dezenas[2], &dezenas[3], &dezenas[4], &dezenas[5]); err != nil {
 			return nil, err
 		}
-		r.Dezenas = []int{d1, d2, d3, d4, d5, d6}
+		r.Dezenas = dezenas
 		resultados = append(resultados, r)
 	}
 	return resultados, nil
