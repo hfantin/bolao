@@ -1,7 +1,5 @@
 # Bolao - gerador de numeros aleatorios para jogos da megasena
-[![Heroku](https://heroku-badge.herokuapp.com/?app=bollao&style=flat)]
-
-- [site](https://bollao.herokuapp.com)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=bollao&style=flat)
 
 ### bibliotecas: 
 - go get -d github.com/gorilla/mux
