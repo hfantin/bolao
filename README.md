@@ -1,4 +1,5 @@
 [![Heroku CI Status](https://bollao.herokuapp.com/last.svg)]
+[![Heroku](https://heroku-badge.herokuapp.com/?app=bollao)]
 
 # Bolao - gerador de numeros aleatorios para jogos da megasena
 
