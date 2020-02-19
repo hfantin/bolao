@@ -30,12 +30,10 @@ System.register(["../views/index", "../models/index"], function (exports_1, cont
                 obterResultados() {
                     return __awaiter(this, void 0, void 0, function* () {
                         try {
-                            let uri = `/resultados/1`;
+                            let uri = `/resultados/ultimo`;
                             let response = yield fetch(uri);
-                            let json = yield response.json();
-                            json.map(item => {
-                                this._resultado = new index_2.Resultado(item.jogo, item.data, item.dezenas);
-                            });
+                            let item = yield response.json();
+                            this._resultado = new index_2.Resultado(item.jogo, item.data, item.dezenas);
                             this._resultadosView.update(this._resultado);
                         }
                         catch (err) {

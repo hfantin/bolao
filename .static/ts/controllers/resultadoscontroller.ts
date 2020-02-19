@@ -11,16 +11,14 @@ export class ResultadosController {
 
     async obterResultados() {
         try{
-            let uri = `/resultados/1`;
+            let uri = `/resultados/ultimo`;
             let response = await fetch(uri);
-            let json = await response.json();
-            json.map(item => {
-                this._resultado = new Resultado(
-                    item.jogo,
-                    item.data, 
-                    item.dezenas
-                )
-            });
+            let item = await response.json();
+            this._resultado = new Resultado(
+                item.jogo,
+                item.data, 
+                item.dezenas
+            );
             this._resultadosView.update(this._resultado);
         } catch (err) {
             console.log('erro: ', err);

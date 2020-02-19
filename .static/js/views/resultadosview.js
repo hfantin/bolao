@@ -14,7 +14,7 @@ System.register(["./view"], function (exports_1, context_1) {
                     return `
         <div>
             <p style="font-weight: bold">Último Resultado:</p> 
-            <p>${model.jogo} - ${model.data} - ${model.dezenas}</p>
+            <p>${model.jogo} - ${model.data} - ${model.dezenas.map(item => ` ${item}`)}</p>
             <br/>
             <br/>
         </div>

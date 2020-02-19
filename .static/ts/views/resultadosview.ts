@@ -7,7 +7,7 @@ export  class ResultadosView extends View<Resultado>{
         return `
         <div>
             <p style="font-weight: bold">Último Resultado:</p> 
-            <p>${model.jogo} - ${model.data} - ${model.dezenas}</p>
+            <p>${model.jogo} - ${model.data} - ${model.dezenas.map(item => ` ${item}`)}</p>
             <br/>
             <br/>
         </div>
