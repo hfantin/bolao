@@ -4,14 +4,11 @@ import (
 	"math/rand"
 	"sort"
 	"time"
+
+	"github.com/hfantin/bolao/model"
 )
 
-type Resultado struct {
-	Jogo    int   `json:"jogo"`
-	Numeros []int `json:"numeros"`
-}
-
-func Generate(jogos, qtd int) []Resultado {
+func Generate(jogos, qtd int) []model.Dezenas {
 	max := 60
 
 	if qtd < 6 || qtd > 20 {
@@ -22,10 +19,10 @@ func Generate(jogos, qtd int) []Resultado {
 		jogos = 1
 	}
 
-	jogosGerados := make([]Resultado, 0, 0)
+	jogosGerados := make([]model.Dezenas, 0, 0)
 	for i := 1; i <= jogos; i++ {
 		numeros := gerarNumeros(max, qtd)
-		jogosGerados = append(jogosGerados, Resultado{i, numeros})
+		jogosGerados = append(jogosGerados, model.Dezenas{i, numeros})
 	}
 
 	return jogosGerados
