@@ -21,7 +21,7 @@ func main() {
 	router.HandleFunc("/resultados/{jogo}", controller.Update).Methods("PUT")
 	router.HandleFunc("/resultados/{jogo}", controller.Delete).Methods("DELETE")
 
-	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./.static/")))
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./.static/build/")))
 	log.Println("Rodando servidor na porta ", config.Env.ServerPort)
 	log.Fatal(http.ListenAndServe(":"+config.Env.ServerPort, router))
 }
