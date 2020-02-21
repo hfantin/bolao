@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { Form, Button, Container, Table, Card, Spinner } from "react-bootstrap";
+import { Form, Button, Container, Table, Card, Spinner, Alert } from "react-bootstrap";
 
 const Home = () => {
 
@@ -8,6 +8,7 @@ const Home = () => {
   const [resultados, setResultados] = useState([]);
   const [ultimos, setUltimos] = useState({jogo: null, data: null, dezenas: []});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("")
 
   useEffect(()=>{
     executarServicoUltimos();
@@ -20,6 +21,7 @@ const Home = () => {
 
   const executarServicoUltimos = async () => {
     try{
+      setError("");
       setLoading(true);
       console.log(`consulta ultimos resultados`);
       let uri = `/resultados/ultimo`;
@@ -27,7 +29,7 @@ const Home = () => {
       let ultimosNumeros = await response.json();
       setUltimos(ultimosNumeros);
     } catch (err) {
-        console.log(`Falha ao obter resultado: ${err}`);
+      setError("Não foi possível obter o último resultado");
     } finally {
       setLoading(false);
     }
@@ -35,17 +37,28 @@ const Home = () => {
 
   const executarServico = async () => {
     try{
+      setError("");
       let uri = `/numeros/${dezenas}/jogos/${jogos}`;
       let response = await fetch(uri);
       let lista = await response.json();
       setResultados(lista);
     } catch (err) {
-        console.log(`Falha ao gerar numeros: ${err}`);
+        setError("Não foi possível gerar os números");
     }
   }
   
   return (
+    
     <Container>
+      <br></br>
+      { error === "" ? null :  (
+        <Alert variant="danger" onClose={() => setError("")} dismissible>
+          <Alert.Heading>{error}</Alert.Heading>
+        </Alert>
+      )
+      }
+        
+      
       <Form>
         <Form.Group controlId="dezenas">
           <Form.Label>Quantidade de dezenas</Form.Label>
