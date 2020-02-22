@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  db:
+    image: atf.intranet.bb.com.br:5001/postgres:9.5
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=loteria
+    networks:
+      - bolao_net
+
+networks:
+  bolao_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "111.111.10.0/24"

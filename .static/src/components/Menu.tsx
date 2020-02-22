@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 
 import { Navbar, Nav } from "react-bootstrap";
-import { Switch, Route, Link } from "react-router-dom";
-import Home from "./Home";
-import Resultados from "./Resultados";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   const [expanded, setExpanded] = useState(false);
@@ -33,11 +31,6 @@ const Menu = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/resultados" component={Resultados} />
-        <Route render={() => <p>Não encontrado</p>} />
-      </Switch>
     </>
   );
 };
