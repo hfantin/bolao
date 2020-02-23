@@ -19,3 +19,15 @@
 
 
 https://stackoverflow.com/questions/39721812/react-router-without-changing-url
+https://www.npmjs.com/package/react-infinite-scroll-component
+
+scroll infinito
+```
+
+SELECT *
+      FROM resultados
+      ORDER BY id desc
+      offset 30 ROWS
+      FETCH NEXT 10 ROWS ONLY
+
+```

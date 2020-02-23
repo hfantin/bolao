@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Container, Table, Spinner } from "react-bootstrap";
-
 import { ResultadosService } from "../services/api/ResultadosService";
 import Message from "../components/Message";
 
