@@ -15,3 +15,7 @@
 [auth](https://devcenter.heroku.com/articles/oauth2-heroku-go)   
 [gorilla/mux](https://github.com/gorilla/mux)   
 [rest example](https://thenewstack.io/make-a-restful-json-api-go)   
+
+
+
+https://stackoverflow.com/questions/39721812/react-router-without-changing-url
