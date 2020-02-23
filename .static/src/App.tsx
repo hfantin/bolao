@@ -14,7 +14,7 @@ function App() {
       <Menu />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/resultados" component={Resultados} />
+        <Route exact path="/res" component={Resultados} />
         <Route render={() => <p>Não encontrado</p>} />
       </Switch>
     </div>

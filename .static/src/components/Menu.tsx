@@ -23,7 +23,7 @@ const Menu = () => {
             </Nav.Link>
             <Nav.Link
               as={Link}
-              to="/resultados"
+              to="/res"
               onClick={() => setExpanded(false)}
             >
               Resultados
