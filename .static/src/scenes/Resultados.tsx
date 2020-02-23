@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Container, Table, Alert } from "react-bootstrap";
+import { Container, Table } from "react-bootstrap";
 
 import { ResultadosService } from "../services/api/ResultadosService";
+import Message from "../components/Message";
 
 const Resultados = () => {
   const [resultados, setResultados] = useState([]);
@@ -15,11 +16,7 @@ const Resultados = () => {
   return (
     <Container>
       <br></br>
-      {erro !== "" && (
-        <Alert variant="danger" onClose={() => setErro("")} dismissible>
-          <Alert.Heading>{erro}</Alert.Heading>
-        </Alert>
-      )}
+      <Message show={erro!==""} message={erro} />
 
       <Table striped bordered hover size="sm">
         <thead>

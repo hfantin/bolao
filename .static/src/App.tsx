@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Switch, Route } from "react-router-dom";
 import Home from "./scenes/Home";
 import Resultados from "./scenes/Resultados";
-import Shield from "./components/Shield";
 
 import Menu from "./components/Menu";
 

@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Form, Button, Container, Table, Card, Spinner, Alert } from "react-bootstrap";
+import { Form, Button, Container, Table } from "react-bootstrap";
 
 import { NumerosService, ResultadosService } from "../services/api";
+import UltimosJogos from '../components/UltimosJogos';
+import Message from '../components/Message';
 
 const Home = () => {
   const [jogos, setJogos] = useState(1);
   const [dezenas, setDezenas] = useState(1);
   const [resultados, setResultados] = useState([]);
   const [erro, setErro] = useState("");
+  const [loading, setLoading] = useState(true);
   const [ultimos, setUltimos] = useState({
-    jogo: null,
-    data: null,
+    jogo: 0,
+    data: "",
     dezenas: []
   });
-  const [loading, setLoading] = useState(true);
+
   const numerosService = new NumerosService();
   const resultadosService = new ResultadosService();
 
@@ -27,27 +30,24 @@ const Home = () => {
   };
 
   const tratarErro = (err: any) => {
-    setErro(`Não foi possível obter os numeros: ${err}`);
+    setErro(`Não foi possível obter o ultimo resultado: ${err}`);
     setLoading(false);
   };
 
   const consultar = (e: React.FormEvent) => {
     e.preventDefault();
+    setErro("");
     numerosService.listar(
       dezenas, jogos, 
       (r: any) => setResultados(r),
-      (err: any) => setErro(`Não foi possível obter os numeros: ${err}`));
+      (err: any) => setErro(`Não foi possível gerar as dezenas: ${err}`));
   };
 
   return (
     <Container>
       <br></br>
-      {erro !== "" && (
-        <Alert variant="danger" onClose={() => setErro("")} dismissible>
-          <Alert.Heading>{erro}</Alert.Heading>
-        </Alert>
-      )}
-      
+      <Message show={erro !== ""} message={erro} />
+     
       <Form>
         <Form.Group controlId="dezenas">
           <Form.Label>Quantidade de dezenas</Form.Label>
@@ -107,21 +107,9 @@ const Home = () => {
       </Table>
 
       <br></br>
-      <Card>
-        <Card.Header>Último Resultado</Card.Header>
-        <Card.Body>
-          {loading ? (
-            <Spinner animation="border" />
-          ) : ultimos.jogo ? (
-            <>
-              <Card.Title>
-                Concurso {ultimos.jogo} de {ultimos.data}
-              </Card.Title>
-              <Card.Text>{ultimos.dezenas.join(", ")}</Card.Text>
-            </>
-          ) : null}
-        </Card.Body>
-      </Card>
+
+      <UltimosJogos loading={loading} jogo={ultimos.jogo} data={ultimos.data} dezenas={ultimos.dezenas} />
+      
     </Container>
   );
 };
