@@ -92,7 +92,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Println("resultado: ", jogo, resultado)
 
-	utils.ReturnResponseWithError(w, "Erro Insert gererico")
+	utils.ReturnResponseWithError(w, "Erro Update gererico")
 	return
 }
 
