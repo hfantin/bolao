@@ -22,15 +22,12 @@ const UltimosJogos: React.FC<Props> = (props: Props) => {
 
     return (
         <Card>
-            <Card.Header>Último Resultado</Card.Header>
+            <Card.Header>Concurso {jogo} realizado em {data}</Card.Header>
             <Card.Body>
             {showLoading ? (
                 <Spinner animation="border" />
             ) : jogo ? (
                 <>
-                <Card.Title>
-                    Concurso {jogo} de {data}
-                </Card.Title>
                 <Card.Text>{dezenas.join(", ")}</Card.Text>
                 </>
             ) : null}

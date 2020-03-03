@@ -47,6 +47,12 @@ const Home = () => {
     <Container>
       <br></br>
       <Message show={erro !== ""} message={erro} />
+
+      <br></br>
+
+      <UltimosJogos loading={loading} jogo={ultimos.jogo} data={ultimos.data} dezenas={ultimos.dezenas} />
+
+      <br></br>
      
       <Form>
         <Form.Group controlId="dezenas">
@@ -105,11 +111,6 @@ const Home = () => {
           ))}
         </tbody>
       </Table>
-
-      <br></br>
-
-      <UltimosJogos loading={loading} jogo={ultimos.jogo} data={ultimos.data} dezenas={ultimos.dezenas} />
-      
     </Container>
   );
 };
