@@ -15,6 +15,7 @@
 [auth](https://devcenter.heroku.com/articles/oauth2-heroku-go)   
 [gorilla/mux](https://github.com/gorilla/mux)   
 [rest example](https://thenewstack.io/make-a-restful-json-api-go)   
+[rest example 2](https://medium.com/@hugo.bjarred/rest-api-with-golang-mux-mysql-c5915347fa5b)   
 
 
 

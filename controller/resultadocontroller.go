@@ -3,7 +3,6 @@ package controller
 //TODO  remover codigo duplicado
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"net/http"
@@ -52,20 +51,20 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 	var resultado model.Resultado
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
 	if err != nil {
-		utils.ReturnResponseWithError(w, "Erro Insert 1: "+err.Error())
+		utils.ReturnResponseWithError(w, "Falha o decodificar corpo da requisição: "+err.Error())
 		return
 	}
-	if err := r.Body.Close(); err != nil {
-		utils.ReturnResponseWithError(w, "Erro Insert 2: "+err.Error())
-		return
-	}
+	defer r.Body.Close()
 	if err := json.Unmarshal(body, &resultado); err != nil {
-		utils.ReturnResponseWithError(w, "Erro Insert 3: "+err.Error())
+		utils.ReturnResponseWithError(w, "Falha o converter json: "+err.Error())
 		return
 	}
-	fmt.Println("resultado: ", resultado)
-
-	utils.ReturnResponseWithError(w, "Erro Insert gererico")
+	_, err = dao.InsertResultado(resultado)
+	if err != nil {
+		utils.ReturnResponseWithError(w, err.Error())
+		return
+	}
+	utils.ReturnResponseWithJson(w, http.StatusCreated, nil)
 	return
 }
 
@@ -73,26 +72,26 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	jogo, err := strconv.Atoi(params["jogo"])
 	if err != nil {
-		utils.ReturnResponseWithError(w, "jogo inválido")
+		utils.ReturnResponseWithError(w, "Número do jogo inválido")
 		return
 	}
 	var resultado model.Resultado
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
 	if err != nil {
-		utils.ReturnResponseWithError(w, "Erro Update 2: "+err.Error())
+		utils.ReturnResponseWithError(w, "Falha o decodificar corpo da requisição: "+err.Error())
 		return
 	}
-	if err := r.Body.Close(); err != nil {
-		utils.ReturnResponseWithError(w, "Erro Update 2: "+err.Error())
-		return
-	}
+	defer r.Body.Close()
 	if err := json.Unmarshal(body, &resultado); err != nil {
-		utils.ReturnResponseWithError(w, "Erro Update 3: "+err.Error())
+		utils.ReturnResponseWithError(w, "Falha o converter json: "+err.Error())
 		return
 	}
-	fmt.Println("resultado: ", jogo, resultado)
-
-	utils.ReturnResponseWithError(w, "Erro Update gererico")
+	err = dao.AtualizarResultado(jogo, resultado)
+	if err != nil {
+		utils.ReturnResponseWithError(w, err.Error())
+		return
+	}
+	utils.ReturnResponseWithJson(w, http.StatusNoContent, nil)
 	return
 }
 
@@ -103,8 +102,11 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 		utils.ReturnResponseWithError(w, "jogo inválido")
 		return
 	}
-	fmt.Println("Delete jogo ", jogo)
-
-	utils.ReturnResponseWithError(w, "Erro Delete")
+	err = dao.ApagarResultado(jogo)
+	if err != nil {
+		utils.ReturnResponseWithError(w, err.Error())
+		return
+	}
+	utils.ReturnResponseWithJson(w, http.StatusNoContent, nil)
 	return
 }

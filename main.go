@@ -10,6 +10,6 @@ import (
 
 func main() {
 	router := router.NewRouter()
-	log.Println("Rodando servidor na porta ", config.Env.ServerPort)
+	log.Println("Rodando servidor na porta", config.Env.ServerPort)
 	log.Fatal(http.ListenAndServe(":"+config.Env.ServerPort, router))
 }

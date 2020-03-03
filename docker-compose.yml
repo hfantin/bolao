@@ -8,6 +8,9 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DB=loteria
+    volumes:
+      - ./resultados.csv:/opt/app/resultados.csv
+      - ./db.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - bolao_net
 
