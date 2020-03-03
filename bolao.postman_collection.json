@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "af77a2b0-4993-4c21-90fa-e771ac8fa7b8",
+		"name": "bolao",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "numeros",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/numeros/8/jogos/2",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"numeros",
+						"8",
+						"jogos",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resultados todos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/resultados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"resultados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resultados get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/resultados/9999",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"resultados",
+						"9999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resultados insert",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"jogo\": 9999, \n\t\"data\": \"12/01/2016\", \n\t\"dezenas\": [ 1, 2, 3, 4, 5, 6 ], \n\t\"ganhadores\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/resultados",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"resultados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resultados update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"data\": \"31/03/2020\", \n\t\"dezenas\": [ 10, 20, 30, 40, 50, 60 ], \n\t\"ganhadores\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/resultados/9999",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"resultados",
+						"9999"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resultados delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/resultados/9999",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"resultados",
+						"9999"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

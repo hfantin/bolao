@@ -1,0 +1,8 @@
+# valores padrão
+PORT=5000
+DB_HOST=ec2-34-192-30-15.compute-1.amazonaws.com
+DB_PORT=5432
+DB_USER=djbdaqxrmdbnwk
+DB_PASS=866a04e2d24e6184afdfee4ef766e78221e1608e3e01af9d6ab5a88417f43a12
+DB_NAME=d9q1u1kisj35fe
+SSL_MODE=require
