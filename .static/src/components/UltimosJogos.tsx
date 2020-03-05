@@ -22,7 +22,7 @@ const UltimosJogos: React.FC<Props> = (props: Props) => {
 
     return (
         <Card>
-            <Card.Header>Concurso {jogo} realizado em {data}</Card.Header>
+            <Card.Header>Resultado do concurso {jogo} de {data}:</Card.Header>
             <Card.Body>
             {showLoading ? (
                 <Spinner animation="border" />
