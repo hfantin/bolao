@@ -11,7 +11,7 @@ import (
 )
 
 func FindAll() ([]model.Resultado, error) {
-	statement := fmt.Sprintf("SELECT id, TO_CHAR(\"data\", 'DD/MM/YYYY'), dezena_1, dezena_2, dezena_3, dezena_4, dezena_5, dezena_6, ganhadores FROM resultados order by id desc")
+	statement := "SELECT id, TO_CHAR(\"data\", 'DD/MM/YYYY'), dezena_1, dezena_2, dezena_3, dezena_4, dezena_5, dezena_6, ganhadores FROM resultados order by id desc"
 	rows, err := db.DB.Query(statement)
 	if err != nil {
 		return nil, err
@@ -32,7 +32,7 @@ func FindAll() ([]model.Resultado, error) {
 }
 
 func FindLast() (model.Resultado, error) {
-	statement := fmt.Sprintf("SELECT id, TO_CHAR(\"data\", 'DD/MM/YYYY'), dezena_1, dezena_2, dezena_3, dezena_4, dezena_5, dezena_6, ganhadores FROM resultados order by id desc limit 1")
+	statement := "SELECT id, TO_CHAR(\"data\", 'DD/MM/YYYY'), dezena_1, dezena_2, dezena_3, dezena_4, dezena_5, dezena_6, ganhadores FROM resultados order by id desc limit 1"
 	rows, err := db.DB.Query(statement)
 	var resultado model.Resultado
 	if err != nil {
@@ -50,8 +50,8 @@ func FindLast() (model.Resultado, error) {
 }
 
 func FindById(jogo int) (model.Resultado, error) {
-	statement := fmt.Sprintf("SELECT id, TO_CHAR(\"data\", 'DD/MM/YYYY'), dezena_1, dezena_2, dezena_3, dezena_4, dezena_5, dezena_6, ganhadores FROM resultados WHERE id=%d", jogo)
-	rows, err := db.DB.Query(statement)
+	statement := "SELECT id, TO_CHAR(\"data\", 'DD/MM/YYYY'), dezena_1, dezena_2, dezena_3, dezena_4, dezena_5, dezena_6, ganhadores FROM resultados WHERE id=$1"
+	rows, err := db.DB.Query(statement, jogo)
 	var resultado model.Resultado
 	if err != nil {
 		return resultado, err
