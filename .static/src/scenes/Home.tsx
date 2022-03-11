@@ -61,7 +61,7 @@ const Home = () => {
             type="number"
             placeholder=""
             max="13"
-            min="1"
+            min="6"
             defaultValue="6"
             onChange={(e: React.FormEvent) =>
               setDezenas(Number((e.target as HTMLInputElement).value))
