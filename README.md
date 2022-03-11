@@ -32,3 +32,8 @@ SELECT *
       FETCH NEXT 10 ROWS ONLY
 
 ```
+
+host: ec2-34-192-30-15.compute-1.amazonaws.com
+db  : d9q1u1kisj35fe
+user: djbdaqxrmdbnwk
+pass: 

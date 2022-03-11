@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Container, Table, Spinner } from "react-bootstrap";
+import { Container, Table, Spinner, Button } from "react-bootstrap";
 import { ResultadosService } from "../services/api/ResultadosService";
 import Message from "../components/Message";
 
 const Resultados = () => {
   const [resultados, setResultados] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [erro, setErro] = useState("");
+  const [message, setMessage] = useState({text: "", type: ""});
   const service = new ResultadosService();
 
   useEffect(() => {
@@ -22,14 +22,19 @@ const Resultados = () => {
 
   const tratarErro = (err: any) => {
     setLoading(false);
-    setErro(`Falha ao listar resultados: ${err}`)
+    setMessage({text: `Falha ao listar resultados: ${err}`, type: 'danger' })
   };
+
+  const atualizar = () => {
+    console.log('em construcao');
+    setMessage({text: `em construcao`, type: 'info' })
+  }
 
   if(loading) {
     return ( 
     <>
       <br></br>
-      <Spinner animation="border" />
+      <Spinner animation="border"/>
     </>
     );
   }
@@ -37,7 +42,13 @@ const Resultados = () => {
   return (
     <Container>
       <br></br>
-      <Message show={erro!==""} message={erro} />
+      <Message show={message.text !== ""} message={message.text} type="danger" />
+
+      <Button variant="dark" type="submit" block onClick={atualizar}>
+          Atualizar
+      </Button>
+
+      <br></br>
 
       <Table striped bordered hover size="sm">
         <thead>
@@ -49,7 +60,7 @@ const Resultados = () => {
           </tr>
         </thead>
         <tbody>
-          {resultados.map((item: any) => (
+          {resultados?.map((item: any) => (
             <tr>
               <td>{item.jogo}</td>
               <td>{item.data}</td>

@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"strconv"
 
@@ -17,9 +18,11 @@ import (
 func GetAll(w http.ResponseWriter, r *http.Request) {
 	lista, err := dao.FindAll()
 	if err != nil {
+		log.Println("falha ao obter resultados", err)
 		utils.ReturnResponseWithError(w, err.Error())
 		return
 	}
+	// log.Println("resultados", len(lista))
 	utils.ReturnResponseWithJson(w, http.StatusOK, lista)
 }
 
